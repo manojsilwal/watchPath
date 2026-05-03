@@ -1,0 +1,31 @@
+{
+  "search_api": {
+    "method": "GET",
+    "url": "/api/search",
+    "status": 200,
+    "triggered_by": "navigate to /search",
+    "request_payload_shape": {
+      "query": "string",
+      "country": "string"
+    },
+    "response_shape": {
+      "results": "array"
+    },
+    "forbidden_fields_seen": []
+  },
+  "title_api": {
+    "method": "GET",
+    "url": "/api/titles/:id",
+    "status": 200,
+    "triggered_by": "navigate to /title/:id",
+    "request_payload_shape": {
+      "id": "string",
+      "country": "string"
+    },
+    "response_shape": {
+      "title": "object",
+      "bestOption": "object"
+    },
+    "forbidden_fields_seen": []
+  }
+}

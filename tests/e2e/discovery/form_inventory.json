@@ -1,0 +1,32 @@
+{
+  "search_form": {
+    "route": "/",
+    "form_id": "search_form",
+    "fields": [
+      {
+        "name": "query",
+        "type": "text",
+        "required": false,
+        "min_length": null,
+        "max_length": null,
+        "label": null,
+        "placeholder": "Search for a movie or show...",
+        "selector_strategy": "placeholder"
+      },
+      {
+        "name": "country",
+        "type": "select",
+        "required": false,
+        "min_length": null,
+        "max_length": null,
+        "label": null,
+        "placeholder": null,
+        "selector_strategy": "css"
+      }
+    ],
+    "submit_button": "Search",
+    "cancel_button": null,
+    "success_indicator": "redirect to /search",
+    "error_indicator": null
+  }
+}

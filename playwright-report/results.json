@@ -1,0 +1,477 @@
+{
+  "config": {
+    "configFile": "/app/playwright.config.ts",
+    "rootDir": "/app/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/app/tests/e2e/setup/global-setup.ts",
+    "globalTeardown": "/app/tests/e2e/setup/global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/app/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/app/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "full_suite.spec.ts",
+      "file": "full_suite.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEARCH",
+          "file": "full_suite.spec.ts",
+          "line": 41,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Happy Path",
+              "file": "full_suite.spec.ts",
+              "line": 42,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "SEARCH-HP-001 — Submit valid search query and navigate to results",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-c84ba34bd46ba0dc8d9b",
+                  "file": "full_suite.spec.ts",
+                  "line": 43,
+                  "column": 9
+                },
+                {
+                  "title": "SEARCH-HP-002 — Change country and submit search query",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-3a1c110ef52128840f33",
+                  "file": "full_suite.spec.ts",
+                  "line": 52,
+                  "column": 9
+                },
+                {
+                  "title": "SEARCH-HP-003 — Navigate back to home page from search results",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-30fa815d4efe2624785f",
+                  "file": "full_suite.spec.ts",
+                  "line": 62,
+                  "column": 9
+                },
+                {
+                  "title": "SEARCH-HP-004 — Click on a search result to view title detail",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-b48795355d30a06c6366",
+                  "file": "full_suite.spec.ts",
+                  "line": 70,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Negative",
+              "file": "full_suite.spec.ts",
+              "line": 80,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "SEARCH-NEG-001 — Submit empty search query",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-f0db4e4ca11fe225a51a",
+                  "file": "full_suite.spec.ts",
+                  "line": 81,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Security",
+              "file": "full_suite.spec.ts",
+              "line": 91,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "SEARCH-SEC-001 — XSS payload: <script>window.__xss=1</script>",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-a1528c7b7921a08f5a19",
+                  "file": "full_suite.spec.ts",
+                  "line": 93,
+                  "column": 11
+                },
+                {
+                  "title": "SEARCH-SEC-001 — XSS payload: <img src=x onerror=\"window.__xss=1\">",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-c96df092d660320eacf2",
+                  "file": "full_suite.spec.ts",
+                  "line": 93,
+                  "column": 11
+                },
+                {
+                  "title": "SEARCH-SEC-002 — SQLi payload: ' OR '1'='1",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-4416414bd9d912efead7",
+                  "file": "full_suite.spec.ts",
+                  "line": 105,
+                  "column": 11
+                },
+                {
+                  "title": "SEARCH-SEC-002 — SQLi payload: '; DROP TABLE users; --",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-c7dff0fc189d086f9d46",
+                  "file": "full_suite.spec.ts",
+                  "line": 105,
+                  "column": 11
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "TITLE_DETAIL",
+          "file": "full_suite.spec.ts",
+          "line": 117,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Happy Path",
+              "file": "full_suite.spec.ts",
+              "line": 118,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "TITLE-HP-001 — Load valid title detail page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-e50165bbb787391c5653",
+                  "file": "full_suite.spec.ts",
+                  "line": 119,
+                  "column": 9
+                },
+                {
+                  "title": "TITLE-HP-002 — Navigate back from title detail page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-52d666b24788711aea36",
+                  "file": "full_suite.spec.ts",
+                  "line": 126,
+                  "column": 9
+                },
+                {
+                  "title": "TITLE-HP-003 — Verify free trial badge is displayed when available",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-265a55f252cbd943a7d8",
+                  "file": "full_suite.spec.ts",
+                  "line": 139,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Negative",
+              "file": "full_suite.spec.ts",
+              "line": 147,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "TITLE-NEG-001 — Invalid title ID returns 404/safe error",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-a5cb26f6700c3a3adbc9",
+                  "file": "full_suite.spec.ts",
+                  "line": 148,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "API",
+              "file": "full_suite.spec.ts",
+              "line": 156,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "TITLE-API-001 — Invalid API query returns standard error",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-6f2065a8e83bb137d112",
+                  "file": "full_suite.spec.ts",
+                  "line": 157,
+                  "column": 9
+                },
+                {
+                  "title": "TITLE-API-002 — 500 error from API handled gracefully",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9c64b73baa82c1240fb4-16989428f4711d8be7b3",
+                  "file": "full_suite.spec.ts",
+                  "line": 164,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "NAVIGATION",
+          "file": "full_suite.spec.ts",
+          "line": 179,
+          "column": 6,
+          "specs": [
+            {
+              "title": "NAV-HP-001 — Ensure 404 page for unknown routes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9c64b73baa82c1240fb4-a3d9b17fe312625bcf4c",
+              "file": "full_suite.spec.ts",
+              "line": 180,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-05-03T04:05:35.225Z",
+    "duration": 163.914,
+    "expected": 0,
+    "skipped": 16,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

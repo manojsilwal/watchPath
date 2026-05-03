@@ -1,0 +1,26 @@
+{
+  "/": {
+    "examples": ["/"],
+    "requires_auth": false,
+    "page_title": "WatchPath AI",
+    "nav_items": [],
+    "forms": ["search_form"],
+    "interactive_elements": ["search_input", "country_select", "search_button"]
+  },
+  "/search": {
+    "examples": ["/search?q=dune&country=US"],
+    "requires_auth": false,
+    "page_title": "Search Results for \"dune\"",
+    "nav_items": ["back_to_search_link", "title_link"],
+    "forms": [],
+    "interactive_elements": []
+  },
+  "/title/:id": {
+    "examples": ["/title/tmdb_movie_693134?country=US"],
+    "requires_auth": false,
+    "page_title": "Title Detail",
+    "nav_items": ["back_button"],
+    "forms": [],
+    "interactive_elements": []
+  }
+}

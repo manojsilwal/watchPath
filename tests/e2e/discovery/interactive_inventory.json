@@ -1,0 +1,13 @@
+{
+  "home_page": {
+    "dropdowns_selects": ["country_selector"],
+    "search_inputs": ["query_input"],
+    "buttons": ["search_button"]
+  },
+  "search_results_page": {
+    "links": ["back_to_search", "title_cards"]
+  },
+  "title_detail_page": {
+    "buttons": ["back_button"]
+  }
+}
