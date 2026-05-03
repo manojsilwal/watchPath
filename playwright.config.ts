@@ -12,7 +12,7 @@ export default defineConfig({
     ['list'],
   ],
   use: {
-    baseURL: process.env.APP_URL ?? 'http://localhost:3000',
+    baseURL: process.env.APP_URL ?? 'http://localhost:4000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'on-first-retry',

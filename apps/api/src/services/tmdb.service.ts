@@ -29,6 +29,7 @@ export const tmdbService = {
 
   async getTitle(id: string) {
     if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
+      if (id !== 'tmdb_movie_693134') return null;
       return {
         titleId: 'tmdb_movie_693134',
         title: 'Dune: Part Two',

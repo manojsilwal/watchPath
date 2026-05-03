@@ -1,6 +1,6 @@
 export default async function globalSetup() {
-  const APP_URL = process.env.APP_URL ?? 'http://localhost:3000';
-  const API_URL = process.env.API_URL ?? 'http://localhost:8080';
+  const APP_URL = process.env.APP_URL ?? 'http://localhost:4000';
+  const API_URL = process.env.API_URL ?? 'http://localhost:9000';
 
   const appResponse = await fetch(APP_URL).catch(() => null);
   if (!appResponse || !appResponse.ok) {

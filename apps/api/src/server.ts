@@ -78,7 +78,7 @@ server.get('/api/titles/:id', async (request, reply) => {
 
 const start = async () => {
   try {
-    const port = parseInt(process.env.PORT || '8080');
+    const port = parseInt(process.env.PORT || '9000');
     await server.listen({ port, host: '0.0.0.0' });
     console.log(`Server listening on port ${port}`);
   } catch (err) {

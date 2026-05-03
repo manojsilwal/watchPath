@@ -15,7 +15,7 @@ export default function TitleDetail({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080'}/api/titles/${id}?country=${country}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:9000'}/api/titles/${id}?country=${country}`)
       .then(res => {
         if (!res.ok) throw new Error('Title not found');
         return res.json();

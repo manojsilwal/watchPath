@@ -15,7 +15,7 @@ function SearchResultsContent() {
   useEffect(() => {
     if (query) {
       setLoading(true);
-      fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080'}/api/search?query=${encodeURIComponent(query)}&country=${country}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:9000'}/api/search?query=${encodeURIComponent(query)}&country=${country}`)
         .then(res => res.json())
         .then(data => {
           setResults(data.results || []);
