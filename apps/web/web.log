@@ -153,3 +153,47 @@
   22 |       })
   23 |       .then(data => { (src/app/title/[id]/page.tsx:28:17)
  GET /unknown-route-123 404 in 77ms (next.js: 5ms, application-code: 72ms)
+ HEAD / 200 in 845ms (next.js: 146ms, application-code: 699ms)
+ GET / 200 in 206ms (next.js: 5ms, application-code: 201ms)
+ GET / 200 in 113ms (next.js: 9ms, application-code: 103ms)
+ GET /search?q=dune&country=US 200 in 61ms (next.js: 9ms, application-code: 52ms)
+ GET / 200 in 62ms (next.js: 3ms, application-code: 59ms)
+ GET /search?q=dune&country=GB 200 in 29ms (next.js: 3ms, application-code: 26ms)
+ GET /search?q=dune&country=US 200 in 142ms (next.js: 3ms, application-code: 139ms)
+ GET / 200 in 52ms (next.js: 9ms, application-code: 43ms)
+ GET /search?q=dune&country=US 200 in 51ms (next.js: 4ms, application-code: 47ms)
+ GET /title/tmdb_movie_693134?country=US 200 in 160ms (next.js: 127ms, application-code: 32ms)
+ GET / 200 in 85ms (next.js: 3ms, application-code: 82ms)
+ GET / 200 in 51ms (next.js: 3ms, application-code: 49ms)
+ GET /search?q=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&country=US 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET / 200 in 57ms (next.js: 3ms, application-code: 55ms)
+ GET /search?q=%3Cimg+src%3Dx+onerror%3D%22window.__xss%3D1%22%3E&country=US 200 in 41ms (next.js: 3ms, application-code: 37ms)
+ GET / 200 in 49ms (next.js: 3ms, application-code: 46ms)
+ GET /search?q=%27+OR+%271%27%3D%271&country=US 200 in 28ms (next.js: 3ms, application-code: 25ms)
+ GET / 200 in 63ms (next.js: 2ms, application-code: 61ms)
+ GET /search?q=%27%3B+DROP+TABLE+users%3B+--&country=US 200 in 24ms (next.js: 3ms, application-code: 21ms)
+ GET /title/tmdb_movie_693134?country=US 200 in 85ms (next.js: 22ms, application-code: 63ms)
+ GET /search?q=dune&country=US 200 in 55ms (next.js: 3ms, application-code: 53ms)
+ GET /title/tmdb_movie_693134?country=US 200 in 54ms (next.js: 24ms, application-code: 30ms)
+ GET /title/tmdb_movie_693134?country=US 200 in 64ms (next.js: 3ms, application-code: 62ms)
+ GET /title/tmdb_invalid_id?country=US 200 in 85ms (next.js: 19ms, application-code: 66ms)
+[browser] Error: Title not found
+    at TitleDetail.useEffect (src/app/title/[id]/page.tsx:20:28)
+  18 |     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:9000'}/api/titles/$...
+  19 |       .then(res => {
+> 20 |         if (!res.ok) throw new Error('Title not found');
+     |                            ^
+  21 |         return res.json();
+  22 |       })
+  23 |       .then(data => { (src/app/title/[id]/page.tsx:28:17)
+ GET /title/tmdb_movie_693134?country=US 200 in 83ms (next.js: 19ms, application-code: 64ms)
+[browser] Error: Title not found
+    at TitleDetail.useEffect (src/app/title/[id]/page.tsx:20:28)
+  18 |     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:9000'}/api/titles/$...
+  19 |       .then(res => {
+> 20 |         if (!res.ok) throw new Error('Title not found');
+     |                            ^
+  21 |         return res.json();
+  22 |       })
+  23 |       .then(data => { (src/app/title/[id]/page.tsx:28:17)
+ GET /unknown-route-123 404 in 67ms (next.js: 10ms, application-code: 57ms)

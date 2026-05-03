@@ -1,0 +1,87 @@
+
+> watchpath-ai@1.0.0 dev
+> concurrently "npm run dev -w apps/web" "npm run dev -w apps/api"
+
+[1]
+[1] > watchpath-api@1.0.0 dev
+[1] > tsx watch src/server.ts
+[1]
+[0]
+[0] > web@0.1.0 dev
+[0] > next dev -p 4000
+[0]
+[1] (node:232236) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+[1] (Use `node --trace-deprecation ...` to show where the warning was created)
+[1] {"level":30,"time":1777786208496,"pid":232236,"hostname":"devbox","msg":"Server listening at http://0.0.0.0:9000"}
+[1] Server listening on port 9000
+[0] ⨯ Failed to start server
+[0] Error: listen EADDRINUSE: address already in use :::4000
+[0]     at <unknown> (Error: listen EADDRINUSE: address already in use :::4000)
+[0]     at new Promise (<anonymous>) {
+[0]   code: 'EADDRINUSE',
+[0]   errno: -98,
+[0]   syscall: 'listen',
+[0]   address: '::',
+[0]   port: 4000
+[0] }
+[0] [?25h
+[0] npm error Lifecycle script `dev` failed with error:
+[0] npm error code 1
+[0] npm error path /app/apps/web
+[0] npm error workspace web@0.1.0
+[0] npm error location /app/apps/web
+[0] npm error command failed
+[0] npm error command sh -c next dev -p 4000
+[0] npm run dev -w apps/web exited with code 1
+[1] {"level":30,"time":1777786232505,"pid":232236,"hostname":"devbox","reqId":"req-1","req":{"method":"HEAD","url":"/","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":39298},"msg":"incoming request"}
+[1] {"level":30,"time":1777786232512,"pid":232236,"hostname":"devbox","reqId":"req-1","res":{"statusCode":200},"responseTime":6.142660999670625,"msg":"request completed"}
+[1] {"level":30,"time":1777786232525,"pid":232236,"hostname":"devbox","reqId":"req-2","req":{"method":"HEAD","url":"/api/health","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":39302},"msg":"incoming request"}
+[1] {"level":30,"time":1777786232526,"pid":232236,"hostname":"devbox","reqId":"req-2","res":{"statusCode":200},"responseTime":0.4502590000629425,"msg":"request completed"}
+[1] {"level":30,"time":1777786268855,"pid":232236,"hostname":"devbox","reqId":"req-3","req":{"method":"GET","url":"/api/health","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":37350},"msg":"incoming request"}
+[1] {"level":30,"time":1777786268858,"pid":232236,"hostname":"devbox","reqId":"req-3","res":{"statusCode":200},"responseTime":1.870749999769032,"msg":"request completed"}
+[1] {"level":30,"time":1777786274874,"pid":232236,"hostname":"devbox","reqId":"req-4","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60348},"msg":"incoming request"}
+[1] {"level":30,"time":1777786274876,"pid":232236,"hostname":"devbox","reqId":"req-4","res":{"statusCode":200},"responseTime":2.070257999934256,"msg":"request completed"}
+[1] {"level":30,"time":1777786274883,"pid":232236,"hostname":"devbox","reqId":"req-5","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60356},"msg":"incoming request"}
+[1] {"level":30,"time":1777786274884,"pid":232236,"hostname":"devbox","reqId":"req-5","res":{"statusCode":200},"responseTime":0.9320029998198152,"msg":"request completed"}
+[1] {"level":30,"time":1777786276263,"pid":232236,"hostname":"devbox","reqId":"req-6","req":{"method":"GET","url":"/api/search?query=dune&country=GB","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60370},"msg":"incoming request"}
+[1] {"level":30,"time":1777786276264,"pid":232236,"hostname":"devbox","reqId":"req-6","res":{"statusCode":200},"responseTime":0.9191729994490743,"msg":"request completed"}
+[1] {"level":30,"time":1777786276267,"pid":232236,"hostname":"devbox","reqId":"req-7","req":{"method":"GET","url":"/api/search?query=dune&country=GB","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60384},"msg":"incoming request"}
+[1] {"level":30,"time":1777786276268,"pid":232236,"hostname":"devbox","reqId":"req-7","res":{"statusCode":200},"responseTime":0.7158849993720651,"msg":"request completed"}
+[1] {"level":30,"time":1777786277423,"pid":232236,"hostname":"devbox","reqId":"req-8","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60398},"msg":"incoming request"}
+[1] {"level":30,"time":1777786277424,"pid":232236,"hostname":"devbox","reqId":"req-8","res":{"statusCode":200},"responseTime":0.8070470001548529,"msg":"request completed"}
+[1] {"level":30,"time":1777786278375,"pid":232236,"hostname":"devbox","reqId":"req-9","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60402},"msg":"incoming request"}
+[1] {"level":30,"time":1777786278377,"pid":232236,"hostname":"devbox","reqId":"req-9","res":{"statusCode":200},"responseTime":1.844340999610722,"msg":"request completed"}
+[1] {"level":30,"time":1777786278715,"pid":232236,"hostname":"devbox","reqId":"req-a","req":{"method":"GET","url":"/api/titles/tmdb_movie_693134?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60402},"msg":"incoming request"}
+[1] {"level":30,"time":1777786278717,"pid":232236,"hostname":"devbox","reqId":"req-a","res":{"statusCode":200},"responseTime":1.5376800000667572,"msg":"request completed"}
+[1] {"level":30,"time":1777786278729,"pid":232236,"hostname":"devbox","reqId":"req-b","req":{"method":"GET","url":"/api/titles/tmdb_movie_693134?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":60412},"msg":"incoming request"}
+[1] {"level":30,"time":1777786278730,"pid":232236,"hostname":"devbox","reqId":"req-b","res":{"statusCode":200},"responseTime":0.7393490001559258,"msg":"request completed"}
+[1] {"level":30,"time":1777786280686,"pid":232236,"hostname":"devbox","reqId":"req-c","req":{"method":"GET","url":"/api/search?query=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57274},"msg":"incoming request"}
+[1] {"level":30,"time":1777786280687,"pid":232236,"hostname":"devbox","reqId":"req-c","res":{"statusCode":200},"responseTime":0.6330610001459718,"msg":"request completed"}
+[1] {"level":30,"time":1777786280692,"pid":232236,"hostname":"devbox","reqId":"req-d","req":{"method":"GET","url":"/api/search?query=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57282},"msg":"incoming request"}
+[1] {"level":30,"time":1777786280693,"pid":232236,"hostname":"devbox","reqId":"req-d","res":{"statusCode":200},"responseTime":0.3762979991734028,"msg":"request completed"}
+[1] {"level":30,"time":1777786282239,"pid":232236,"hostname":"devbox","reqId":"req-e","req":{"method":"GET","url":"/api/search?query=%27%20OR%20%271%27%3D%271&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57284},"msg":"incoming request"}
+[1] {"level":30,"time":1777786282241,"pid":232236,"hostname":"devbox","reqId":"req-e","res":{"statusCode":200},"responseTime":0.6151909995824099,"msg":"request completed"}
+[1] {"level":30,"time":1777786282244,"pid":232236,"hostname":"devbox","reqId":"req-f","req":{"method":"GET","url":"/api/search?query=%27%20OR%20%271%27%3D%271&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57296},"msg":"incoming request"}
+[1] {"level":30,"time":1777786282246,"pid":232236,"hostname":"devbox","reqId":"req-f","res":{"statusCode":200},"responseTime":0.48039300087839365,"msg":"request completed"}
+[1] {"level":30,"time":1777786283030,"pid":232236,"hostname":"devbox","reqId":"req-g","req":{"method":"GET","url":"/api/search?query=%27%3B%20DROP%20TABLE%20users%3B%20--&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57308},"msg":"incoming request"}
+[1] {"level":30,"time":1777786283030,"pid":232236,"hostname":"devbox","reqId":"req-g","res":{"statusCode":200},"responseTime":0.4879660001024604,"msg":"request completed"}
+[1] {"level":30,"time":1777786283037,"pid":232236,"hostname":"devbox","reqId":"req-h","req":{"method":"GET","url":"/api/search?query=%27%3B%20DROP%20TABLE%20users%3B%20--&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57308},"msg":"incoming request"}
+[1] {"level":30,"time":1777786283038,"pid":232236,"hostname":"devbox","reqId":"req-h","res":{"statusCode":200},"responseTime":1.0015569999814034,"msg":"request completed"}
+[1] {"level":30,"time":1777786283751,"pid":232236,"hostname":"devbox","reqId":"req-i","req":{"method":"GET","url":"/api/titles/tmdb_movie_693134?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57324},"msg":"incoming request"}
+[1] {"level":30,"time":1777786283753,"pid":232236,"hostname":"devbox","reqId":"req-i","res":{"statusCode":200},"responseTime":1.686136999167502,"msg":"request completed"}
+[1] {"level":30,"time":1777786284465,"pid":232236,"hostname":"devbox","reqId":"req-j","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57334},"msg":"incoming request"}
+[1] {"level":30,"time":1777786284465,"pid":232236,"hostname":"devbox","reqId":"req-j","res":{"statusCode":200},"responseTime":0.4895009994506836,"msg":"request completed"}
+[1] {"level":30,"time":1777786284677,"pid":232236,"hostname":"devbox","reqId":"req-k","req":{"method":"GET","url":"/api/titles/tmdb_movie_693134?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57334},"msg":"incoming request"}
+[1] {"level":30,"time":1777786284679,"pid":232236,"hostname":"devbox","reqId":"req-k","res":{"statusCode":200},"responseTime":2.0488079991191626,"msg":"request completed"}
+[1] {"level":30,"time":1777786284683,"pid":232236,"hostname":"devbox","reqId":"req-l","req":{"method":"GET","url":"/api/titles/tmdb_movie_693134?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57346},"msg":"incoming request"}
+[1] {"level":30,"time":1777786284684,"pid":232236,"hostname":"devbox","reqId":"req-l","res":{"statusCode":200},"responseTime":0.5305220000445843,"msg":"request completed"}
+[1] {"level":30,"time":1777786284778,"pid":232236,"hostname":"devbox","reqId":"req-m","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57346},"msg":"incoming request"}
+[1] {"level":30,"time":1777786284779,"pid":232236,"hostname":"devbox","reqId":"req-m","res":{"statusCode":200},"responseTime":0.39593200013041496,"msg":"request completed"}
+[1] {"level":30,"time":1777786284781,"pid":232236,"hostname":"devbox","reqId":"req-n","req":{"method":"GET","url":"/api/search?query=dune&country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57334},"msg":"incoming request"}
+[1] {"level":30,"time":1777786284781,"pid":232236,"hostname":"devbox","reqId":"req-n","res":{"statusCode":200},"responseTime":0.3906870000064373,"msg":"request completed"}
+[1] {"level":30,"time":1777786285463,"pid":232236,"hostname":"devbox","reqId":"req-o","req":{"method":"GET","url":"/api/titles/tmdb_movie_693134?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57352},"msg":"incoming request"}
+[1] {"level":30,"time":1777786285464,"pid":232236,"hostname":"devbox","reqId":"req-o","res":{"statusCode":200},"responseTime":0.40769699960947037,"msg":"request completed"}
+[1] {"level":30,"time":1777786286231,"pid":232236,"hostname":"devbox","reqId":"req-p","req":{"method":"GET","url":"/api/titles/tmdb_invalid_id?country=US","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57354},"msg":"incoming request"}
+[1] {"level":30,"time":1777786286233,"pid":232236,"hostname":"devbox","reqId":"req-p","res":{"statusCode":404},"responseTime":0.7274620002135634,"msg":"request completed"}
+[1] {"level":30,"time":1777786286723,"pid":232236,"hostname":"devbox","reqId":"req-q","req":{"method":"GET","url":"/api/search","hostname":"localhost:9000","remoteAddress":"127.0.0.1","remotePort":57366},"msg":"incoming request"}
+[1] {"level":30,"time":1777786286725,"pid":232236,"hostname":"devbox","reqId":"req-q","res":{"statusCode":400},"responseTime":1.367514000274241,"msg":"request completed"}

@@ -25,6 +25,10 @@ const titleQuerySchema = z.object({
   country: z.string().optional()
 });
 
+server.get('/', async (request, reply) => {
+  return { message: 'WatchPath API is running. Check /api/health for status.' };
+});
+
 server.get('/api/health', async (request, reply) => {
   return { status: 'ok' };
 });
