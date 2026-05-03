@@ -60,7 +60,20 @@ server.get('/api/titles/:id', async (request, reply) => {
     reply.status(404).send({ error: 'Title not found' });
     return;
   }
-  return { title, bestOption: null, availability: [], releaseStatus: { status: 'available', officialOttReleaseDate: null, estimatedWindow: null, confidence: 0 }, verificationSummary: { suspiciousLinksFiltered: 0 } };
+
+  // Add a mocked best option for demonstration (e.g., Apple TV with a free trial)
+  const bestOption = {
+    providerName: 'Apple TV+',
+    accessType: 'subscription',
+    incrementalCost: 9.99,
+    currency: 'USD',
+    url: 'https://tv.apple.com',
+    confidence: 0.95,
+    hasFreeTrial: true,
+    freeTrialDays: 7
+  };
+
+  return { title, bestOption, availability: [], releaseStatus: { status: 'available', officialOttReleaseDate: null, estimatedWindow: null, confidence: 0 }, verificationSummary: { suspiciousLinksFiltered: 0 } };
 });
 
 const start = async () => {

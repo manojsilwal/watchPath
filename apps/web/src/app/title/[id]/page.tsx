@@ -58,9 +58,16 @@ export default function TitleDetail({ params }: { params: { id: string } }) {
                 <div className="p-4 bg-blue-50 border border-blue-100 rounded-lg mb-6">
                   <h3 className="font-semibold text-blue-900 mb-1">Cheapest Way to Watch ({country})</h3>
                   {data.bestOption ? (
-                    <p className="text-blue-800">
-                      Available on {data.bestOption.providerName} for {data.bestOption.incrementalCost === 0 ? 'Free' : `$${data.bestOption.incrementalCost}`}
-                    </p>
+                    <div>
+                      <p className="text-blue-800">
+                        Available on {data.bestOption.providerName} for {data.bestOption.incrementalCost === 0 ? 'Free' : `$${data.bestOption.incrementalCost}`}
+                      </p>
+                      {data.bestOption.hasFreeTrial && (
+                        <p className="text-green-700 text-sm font-medium mt-1">
+                          ✨ {data.bestOption.freeTrialDays}-day free trial available
+                        </p>
+                      )}
+                    </div>
                   ) : (
                     <p className="text-blue-800">No verified legal streaming option found in your country right now.</p>
                   )}
