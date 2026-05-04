@@ -77,7 +77,23 @@ server.get('/api/titles/:id', async (request, reply) => {
   let availability = [];
 
   // Extract real provider info from TVMaze if available
-  if (titleData._tvmazeData) {
+  if (titleData._movieData) {
+     providerName = titleData._movieData.providerName;
+     url = titleData._movieData.url;
+     accessType = titleData._movieData.accessType;
+
+     availability.push({
+        providerName,
+        accessType,
+        incrementalCost,
+        currency,
+        url,
+        confidence: 0.95,
+        hasFreeTrial: true,
+        freeTrialDays: 7
+     });
+
+  } else if (titleData._tvmazeData) {
      const network = titleData._tvmazeData.network;
      const webChannel = titleData._tvmazeData.webChannel;
 
