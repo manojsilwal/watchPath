@@ -72,7 +72,7 @@ test.describe('SEARCH', () => {
       await page.goto('/search?q=dune&country=US');
       await Selectors.search.titleCard(page).first().waitFor({ state: 'visible' });
       await Selectors.search.titleCard(page).first().click();
-      await expect(page).toHaveURL(/title\/tmdb_movie_693134\?country=US/);
+      await expect(page).toHaveURL(/title\/tvmaze_show_\d+\?country=US/);
       consoleCapture.assertNoErrors();
     });
   });
@@ -118,7 +118,7 @@ test.describe('TITLE_DETAIL', () => {
   test.describe('Happy Path', () => {
     test('TITLE-HP-001 — Load valid title detail page', async ({ page }) => {
       const consoleCapture = await attachConsoleCapture(page);
-      await page.goto('/title/tmdb_movie_693134?country=US');
+      await page.goto('/title/tvmaze_show_42846?country=US');
       await expect(Selectors.titleDetail.cheapestOptionHeading(page)).toBeVisible();
       consoleCapture.assertNoErrors();
     });
@@ -129,7 +129,7 @@ test.describe('TITLE_DETAIL', () => {
       await page.goto('/search?q=dune&country=US');
       await Selectors.search.titleCard(page).first().waitFor({ state: 'visible' });
       await Selectors.search.titleCard(page).first().click();
-      await expect(page).toHaveURL(/title\/tmdb_movie_693134/);
+      await expect(page).toHaveURL(/title\/tvmaze_show_\d+/);
       await Selectors.titleDetail.backButton(page).click();
       // Browser back button equivalent
       await expect(page).toHaveURL(/search\?q=dune&country=US/);
@@ -138,7 +138,7 @@ test.describe('TITLE_DETAIL', () => {
 
     test('TITLE-HP-003 — Verify free trial badge is displayed when available', async ({ page }) => {
       const consoleCapture = await attachConsoleCapture(page);
-      await page.goto('/title/tmdb_movie_693134?country=US');
+      await page.goto('/title/tvmaze_show_42846?country=US');
       await expect(Selectors.titleDetail.freeTrialBadge(page)).toBeVisible();
       consoleCapture.assertNoErrors();
     });
@@ -168,7 +168,7 @@ test.describe('TITLE_DETAIL', () => {
           body: JSON.stringify({ error: 'Internal Server Error' }),
         })
       );
-      await page.goto('/title/tmdb_movie_693134?country=US');
+      await page.goto('/title/tvmaze_show_42846?country=US');
       await expect(page.locator('body')).toContainText(/Internal Server Error|failed to fetch|Title not found/i);
     });
   });

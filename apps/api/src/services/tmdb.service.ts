@@ -2,33 +2,27 @@ import fetch from 'node-fetch';
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY || '';
 const BASE_URL = 'https://api.themoviedb.org/3';
+const TVMAZE_BASE_URL = 'https://api.tvmaze.com';
 
 export const tmdbService = {
   async search(query: string) {
     if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
-      const q = query.toLowerCase();
-      if (q.includes('f1')) {
-        return [{
-          titleId: 'tmdb_movie_123456',
-          title: 'F1',
-          year: 2025,
-          type: 'movie',
-          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg', // Placeholder
-          matchConfidence: 0.98
-        }];
-      } else if (q.includes('dune')) {
-        return [{
-          titleId: 'tmdb_movie_693134',
-          title: 'Dune: Part Two',
-          year: 2024,
-          type: 'movie',
-          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg',
-          matchConfidence: 0.98
-        }];
-      } else {
-        return [];
-      }
+      // Use free TVMaze API instead of mock
+      const response = await fetch(`${TVMAZE_BASE_URL}/search/shows?q=${encodeURIComponent(query)}`);
+      const data = await response.json();
+      return (data || []).slice(0, 10).map((r: any) => {
+        const show = r.show;
+        return {
+          titleId: `tvmaze_show_${show.id}`,
+          title: show.name,
+          year: show.premiered ? parseInt(show.premiered.split('-')[0]) : null,
+          type: 'show',
+          posterUrl: show.image?.medium || null,
+          matchConfidence: r.score
+        };
+      });
     }
+
     const response = await fetch(`${BASE_URL}/search/multi?query=${encodeURIComponent(query)}&api_key=${TMDB_API_KEY}`);
     const data = await response.json();
     return (data.results || []).map((r: any) => ({
@@ -43,25 +37,23 @@ export const tmdbService = {
 
   async getTitle(id: string) {
     if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
-      if (id === 'tmdb_movie_693134') {
-        return {
-          titleId: 'tmdb_movie_693134',
-          title: 'Dune: Part Two',
-          year: 2024,
-          runtimeMinutes: 166,
-          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg'
-        };
-      } else if (id === 'tmdb_movie_123456') {
-        return {
-          titleId: 'tmdb_movie_123456',
-          title: 'F1',
-          year: 2025,
-          runtimeMinutes: 120,
-          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg'
-        };
-      }
-      return null;
+      const parts = id.split('_');
+      if (parts.length !== 3 || parts[0] !== 'tvmaze') return null;
+      const tvmazeId = parts[2];
+      const response = await fetch(`${TVMAZE_BASE_URL}/shows/${tvmazeId}`);
+      if (!response.ok) return null;
+      const show = await response.json();
+
+      return {
+        titleId: id,
+        title: show.name,
+        year: show.premiered ? parseInt(show.premiered.split('-')[0]) : null,
+        runtimeMinutes: show.averageRuntime || show.runtime || 0,
+        posterUrl: show.image?.original || show.image?.medium || null,
+        _tvmazeData: show // store raw data to extract network/webChannel later
+      };
     }
+
     const parts = id.split('_');
     if (parts.length !== 3 || parts[0] !== 'tmdb') return null;
     const type = parts[1];
