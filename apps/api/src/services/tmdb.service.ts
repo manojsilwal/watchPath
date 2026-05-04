@@ -6,14 +6,28 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 export const tmdbService = {
   async search(query: string) {
     if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
-      return [{
-        titleId: 'tmdb_movie_693134',
-        title: 'Dune: Part Two',
-        year: 2024,
-        type: 'movie',
-        posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg',
-        matchConfidence: 0.98
-      }];
+      const q = query.toLowerCase();
+      if (q.includes('f1')) {
+        return [{
+          titleId: 'tmdb_movie_123456',
+          title: 'F1',
+          year: 2025,
+          type: 'movie',
+          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg', // Placeholder
+          matchConfidence: 0.98
+        }];
+      } else if (q.includes('dune')) {
+        return [{
+          titleId: 'tmdb_movie_693134',
+          title: 'Dune: Part Two',
+          year: 2024,
+          type: 'movie',
+          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg',
+          matchConfidence: 0.98
+        }];
+      } else {
+        return [];
+      }
     }
     const response = await fetch(`${BASE_URL}/search/multi?query=${encodeURIComponent(query)}&api_key=${TMDB_API_KEY}`);
     const data = await response.json();
@@ -29,14 +43,24 @@ export const tmdbService = {
 
   async getTitle(id: string) {
     if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
-      if (id !== 'tmdb_movie_693134') return null;
-      return {
-        titleId: 'tmdb_movie_693134',
-        title: 'Dune: Part Two',
-        year: 2024,
-        runtimeMinutes: 166,
-        posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg'
-      };
+      if (id === 'tmdb_movie_693134') {
+        return {
+          titleId: 'tmdb_movie_693134',
+          title: 'Dune: Part Two',
+          year: 2024,
+          runtimeMinutes: 166,
+          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg'
+        };
+      } else if (id === 'tmdb_movie_123456') {
+        return {
+          titleId: 'tmdb_movie_123456',
+          title: 'F1',
+          year: 2025,
+          runtimeMinutes: 120,
+          posterUrl: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2JGjjc9CW.jpg'
+        };
+      }
+      return null;
     }
     const parts = id.split('_');
     if (parts.length !== 3 || parts[0] !== 'tmdb') return null;
