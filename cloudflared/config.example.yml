@@ -1,0 +1,25 @@
+# Named Cloudflare Tunnel (stable hostname on your zone).
+#
+# 1. cloudflared tunnel login
+# 2. cloudflared tunnel create watchpath-dev
+# 3. Note the tunnel UUID from output or Zero Trust → Networks → Tunnels.
+# 4. cloudflared tunnel route dns watchpath-dev watchpath.example.com
+# 5. cloudflared tunnel route dns watchpath-dev api.watchpath.example.com
+# 6. Copy this file to config.yml, replace tunnel id and credentials-file path
+#    (credentials live in ~/.cloudflared/<UUID>.json by default).
+# 7. cloudflared tunnel --config cloudflared/config.yml run
+#
+# With both hostnames exposed, set in .env for the web app:
+#   NEXT_PUBLIC_API_BASE_URL=https://api.watchpath.example.com
+#
+tunnel: REPLACE_WITH_TUNNEL_UUID
+credentials-file: /Users/YOU/.cloudflared/REPLACE_WITH_TUNNEL_UUID.json
+
+ingress:
+  # Use 127.0.0.1 (not localhost) on macOS — localhost can resolve to ::1 while
+  # the dev server listens on IPv4 only, which causes 502 from cloudflared.
+  - hostname: watchpath.example.com
+    service: http://127.0.0.1:4000
+  - hostname: api.watchpath.example.com
+    service: http://127.0.0.1:9000
+  - service: http_status:404
