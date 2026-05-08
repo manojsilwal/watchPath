@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .env
+cloudflared/config.yml
 dev.log
 playwright-report/
 test-results/

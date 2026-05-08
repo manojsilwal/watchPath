@@ -11,6 +11,14 @@ import { Selectors } from './selectors';
 const APP_URL = process.env.APP_URL ?? 'http://localhost:4000';
 const API_URL = process.env.API_URL ?? 'http://localhost:9000';
 
+function escapeRegExp(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+async function expectHomeUrl(page: Page) {
+  await expect(page).toHaveURL(new RegExp(`^${escapeRegExp(APP_URL)}/?$`));
+}
+
 async function attachConsoleCapture(page: Page) {
   const errors: string[] = [];
   page.on('console', msg => {
@@ -53,7 +61,7 @@ test.describe('SEARCH', () => {
       const consoleCapture = await attachConsoleCapture(page);
       await page.goto('/');
       await Selectors.home.searchInput(page).fill('dune');
-      await Selectors.home.countrySelect(page).selectOption('GB');
+      await Selectors.home.selectCountry(page, 'GB');
       await Selectors.home.searchButton(page).click();
       await expect(page).toHaveURL(/search\?q=dune&country=GB/);
       consoleCapture.assertNoErrors();
@@ -63,7 +71,7 @@ test.describe('SEARCH', () => {
       const consoleCapture = await attachConsoleCapture(page);
       await page.goto('/search?q=dune&country=US');
       await Selectors.search.backLink(page).click();
-      await expect(page).toHaveURL(APP_URL + '/');
+      await expectHomeUrl(page);
       consoleCapture.assertNoErrors();
     });
 
@@ -72,7 +80,7 @@ test.describe('SEARCH', () => {
       await page.goto('/search?q=dune&country=US');
       await Selectors.search.titleCard(page).first().waitFor({ state: 'visible' });
       await Selectors.search.titleCard(page).first().click();
-      await expect(page).toHaveURL(/title\/tvmaze_show_\d+\?country=US/);
+      await expect(page).toHaveURL(/\/title\/[^/?]+\?country=US/);
       consoleCapture.assertNoErrors();
     });
   });
@@ -83,7 +91,7 @@ test.describe('SEARCH', () => {
       await page.goto('/');
       await Selectors.home.searchButton(page).click();
       // Should remain on the homepage
-      await expect(page).toHaveURL(APP_URL + '/');
+      await expectHomeUrl(page);
       consoleCapture.assertNoErrors();
     });
   });
@@ -119,7 +127,7 @@ test.describe('TITLE_DETAIL', () => {
     test('TITLE-HP-001 — Load valid title detail page', async ({ page }) => {
       const consoleCapture = await attachConsoleCapture(page);
       await page.goto('/title/tvmaze_show_42846?country=US');
-      await expect(Selectors.titleDetail.cheapestOptionHeading(page)).toBeVisible();
+      await expect(Selectors.titleDetail.bestOptionHeading(page)).toBeVisible();
       consoleCapture.assertNoErrors();
     });
 

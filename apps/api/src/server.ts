@@ -1,7 +1,11 @@
-import 'dotenv/config';
+import './load-env';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { z } from 'zod';
+
+import { runMigrations } from './db/migrate';
+import { registerAdminRoutes } from './routes/adminRoutes';
+import { registerAuthRoutes } from './routes/authRoutes';
 import { tmdbService } from './services/tmdb.service';
 
 const server = Fastify({
@@ -9,8 +13,12 @@ const server = Fastify({
 });
 
 server.register(cors, {
-  origin: '*'
+  origin: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Ingest-Key'],
 });
+
+registerAuthRoutes(server);
+registerAdminRoutes(server);
 
 const searchSchema = z.object({
   query: z.string().min(1),
@@ -201,6 +209,9 @@ server.get('/api/titles/:id', async (request, reply) => {
 
 const start = async () => {
   try {
+    if (process.env.DATABASE_URL && process.env.SKIP_DB_MIGRATE !== 'true') {
+      await runMigrations();
+    }
     const port = parseInt(process.env.PORT || '9000');
     await server.listen({ port, host: '0.0.0.0' });
     console.log(`Server listening on port ${port}`);
