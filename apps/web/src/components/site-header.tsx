@@ -14,16 +14,16 @@ export function SiteHeader() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header className="bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <Film className="w-8 h-8 text-indigo-600 group-hover:text-indigo-700 transition-colors" />
+            <Film className="w-8 h-8 text-primary group-hover:text-primary/80 transition-colors" />
             <div>
-              <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+              <p className="text-2xl font-bold text-foreground">
                 WatchPath AI
               </p>
-              <p className="text-xs text-gray-500">Legal streaming guide</p>
+              <p className="text-xs text-muted-foreground">Legal streaming guide</p>
             </div>
           </Link>
 
