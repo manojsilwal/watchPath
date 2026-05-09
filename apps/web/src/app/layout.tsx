@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-screen flex flex-col font-sans bg-gradient-to-br from-indigo-50 via-white to-purple-50 text-gray-900">
+      <body className="min-h-screen flex flex-col font-sans bg-background text-foreground">
         <AuthProvider>
           <SiteHeader />
           {children}
