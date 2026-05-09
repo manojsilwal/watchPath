@@ -89,9 +89,36 @@ export const tmdbService = {
   async search(query: string) {
     const extras = await curatedSearchExtras(query);
 
-    if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
+    if (!TMDB_API_KEY || TMDB_API_KEY === 'replace_me' || TMDB_API_KEY === 'your_tmdb_key') {
+      return this._fallbackToTvMaze(query, extras);
+    }
+
+    try {
+      const response = await fetch(`${BASE_URL}/search/multi?query=${encodeURIComponent(query)}&api_key=${TMDB_API_KEY}`);
+      if (!response.ok) {
+        console.error(`TMDB API returned ${response.status}. Falling back to TVMaze.`);
+        return this._fallbackToTvMaze(query, extras);
+      }
+      const data = await response.json() as any;
+      const tmdbMapped = (data.results || []).map((r: any) => ({
+        titleId: `tmdb_${r.media_type}_${r.id}`,
+        title: r.title || r.name,
+        year: r.release_date ? parseInt(r.release_date.split('-')[0]) : r.first_air_date ? parseInt(r.first_air_date.split('-')[0]) : null,
+        type: r.media_type,
+        posterUrl: r.poster_path ? `https://image.tmdb.org/t/p/w500${r.poster_path}` : null,
+        matchConfidence: 0.9,
+      }));
+      return mergeSearchResults(extras, tmdbMapped);
+    } catch (err) {
+      console.error('TMDB search failed, falling back to TVMaze:', err);
+      return this._fallbackToTvMaze(query, extras);
+    }
+  },
+
+  async _fallbackToTvMaze(query: string, extras: any[]) {
+    try {
       const response = await fetch(`${TVMAZE_BASE_URL}/search/shows?q=${encodeURIComponent(query)}`);
-      const data = await response.json();
+      const data = await response.json() as any[];
 
       const tvMazeResults = (data || []).slice(0, 10).map((r: any) => {
         const show = r.show;
@@ -106,19 +133,10 @@ export const tmdbService = {
       });
 
       return mergeSearchResults(extras, tvMazeResults);
+    } catch (err) {
+      console.error('TVMaze fallback failed:', err);
+      return extras;
     }
-
-    const response = await fetch(`${BASE_URL}/search/multi?query=${encodeURIComponent(query)}&api_key=${TMDB_API_KEY}`);
-    const data = await response.json();
-    const tmdbMapped = (data.results || []).map((r: any) => ({
-      titleId: `tmdb_${r.media_type}_${r.id}`,
-      title: r.title || r.name,
-      year: r.release_date ? parseInt(r.release_date.split('-')[0]) : r.first_air_date ? parseInt(r.first_air_date.split('-')[0]) : null,
-      type: r.media_type,
-      posterUrl: r.poster_path ? `https://image.tmdb.org/t/p/w500${r.poster_path}` : null,
-      matchConfidence: 0.9,
-    }));
-    return mergeSearchResults(extras, tmdbMapped);
   },
 
   async getTitle(id: string) {
@@ -146,7 +164,7 @@ export const tmdbService = {
       };
     }
 
-    if (TMDB_API_KEY === 'replace_me' || !TMDB_API_KEY) {
+    if (!TMDB_API_KEY || TMDB_API_KEY === 'replace_me' || TMDB_API_KEY === 'your_tmdb_key') {
       return null;
     }
 
