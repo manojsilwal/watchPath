@@ -82,7 +82,7 @@ export default function Home() {
 
           <form
             onSubmit={handleSearch}
-            className="flex gap-4 w-full max-w-3xl mx-auto flex-col sm:flex-row p-4 sm:p-2 bg-card/50 backdrop-blur-md rounded-2xl shadow-xl border border-border"
+            className="flex gap-4 w-full max-w-3xl mx-auto flex-col sm:flex-row p-4 sm:p-2 bg-transparent"
           >
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
