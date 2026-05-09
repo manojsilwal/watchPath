@@ -93,7 +93,7 @@ export default function DashboardPage() {
   if (!hydrated) {
     return (
       <main className="flex-1 py-8 px-4">
-        <p className="text-center text-gray-500">Loading…</p>
+        <p className="text-center text-muted-foreground">Loading…</p>
       </main>
     );
   }
@@ -103,7 +103,7 @@ export default function DashboardPage() {
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Dashboard</h1>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             Manage your subscriptions and alerts to get personalized recommendations
           </p>
         </div>
@@ -111,7 +111,7 @@ export default function DashboardPage() {
         <Card className="mb-8">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Settings className="w-5 h-5 text-indigo-600" />
+              <Settings className="w-5 h-5 text-primary" />
               <CardTitle>Settings</CardTitle>
             </div>
           </CardHeader>
@@ -133,7 +133,7 @@ export default function DashboardPage() {
                     <SelectItem value="IN">🇮🇳 India</SelectItem>
                   </SelectContent>
                 </Select>
-                <p className="text-sm text-gray-500 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   This helps us show you relevant streaming availability in your region
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function DashboardPage() {
         <Card className="mb-8">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-indigo-600" />
+              <CheckCircle2 className="w-5 h-5 text-primary" />
               <CardTitle>Your Subscriptions</CardTitle>
             </div>
             <CardDescription>
@@ -164,14 +164,14 @@ export default function DashboardPage() {
                       border-2 rounded-lg p-4 cursor-pointer transition-all text-left w-full
                       ${
                         isSubscribed
-                          ? 'border-indigo-500 bg-indigo-50 shadow-md'
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                          ? 'border-primary bg-primary/10 shadow-md'
+                          : 'border-border hover:border-border/80 bg-zinc-900'
                       }
                     `}
                     onClick={() => toggleSubscription(provider.id)}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-zinc-800 shadow-sm flex items-center justify-center flex-shrink-0">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={provider.logoUrl}
@@ -183,7 +183,7 @@ export default function DashboardPage() {
                         <h3 className="font-semibold text-sm">{provider.name}</h3>
                         <div className="flex items-center gap-2 mt-1">
                           {isSubscribed ? (
-                            <Badge className="bg-green-100 text-green-700 border-green-200 text-xs">
+                            <Badge className="bg-green-900/30 text-green-400 border-green-800 text-xs">
                               <CheckCircle2 className="w-3 h-3 mr-1" />
                               Active
                             </Badge>
@@ -202,8 +202,8 @@ export default function DashboardPage() {
             </div>
 
             {userSubscriptions.length > 0 && (
-              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-sm text-green-800">
+              <div className="mt-6 p-4 bg-green-900/20 border border-green-900/50 rounded-lg">
+                <p className="text-sm text-green-400">
                   <CheckCircle2 className="w-4 h-4 inline mr-1" />
                   You have {userSubscriptions.length} active subscription
                   {userSubscriptions.length !== 1 ? 's' : ''}. We use this on title detail pages.
@@ -212,8 +212,8 @@ export default function DashboardPage() {
             )}
 
             {userSubscriptions.length === 0 && (
-              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-sm text-blue-800">
+              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-900/50 rounded-lg">
+                <p className="text-sm text-blue-400">
                   Add your subscriptions to see $0 incremental pricing when a provider matches.
                 </p>
               </div>
@@ -226,7 +226,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <Bell className="w-5 h-5 text-indigo-600" />
+                  <Bell className="w-5 h-5 text-primary" />
                   <CardTitle>Your Alerts</CardTitle>
                 </div>
                 <CardDescription className="mt-2">
@@ -239,7 +239,7 @@ export default function DashboardPage() {
             {alerts.length > 0 ? (
               <div className="space-y-4">
                 {alerts.map((alert) => (
-                  <div key={alert.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={alert.id} className="border border-border bg-zinc-900/50 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
@@ -254,7 +254,7 @@ export default function DashboardPage() {
                           </div>
                           <Badge
                             variant="outline"
-                            className={alert.alertType === 'free_available' ? 'bg-green-50' : ''}
+                            className={alert.alertType === 'free_available' ? 'bg-green-900/20' : ''}
                           >
                             {alert.alertType === 'free_available' && 'Free Available'}
                             {alert.alertType === 'price_drop' && 'Price Drop'}
@@ -262,13 +262,13 @@ export default function DashboardPage() {
                             {alert.alertType === 'available_under_price' && 'Under Price'}
                           </Badge>
                         </div>
-                        <p className="text-sm text-gray-600 mb-1">Title ID: {alert.titleId}</p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-muted-foreground mb-1">Title ID: {alert.titleId}</p>
+                        <p className="text-sm text-muted-foreground">
                           {alert.freeOnly && 'Notify when available for free'}
                           {alert.maxPrice != null && `Notify when price drops below $${alert.maxPrice}`}
                           {alert.targetProvider && `Notify when available on ${alert.targetProvider}`}
                         </p>
-                        <p className="text-xs text-gray-400 mt-2">
+                        <p className="text-xs text-muted-foreground mt-2">
                           Created: {new Date(alert.createdAt).toLocaleDateString()}
                         </p>
                       </div>
@@ -276,7 +276,7 @@ export default function DashboardPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => deleteAlert(alert.id)}
-                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                        className="text-red-400 hover:text-red-300 hover:bg-red-900/20"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
@@ -286,9 +286,9 @@ export default function DashboardPage() {
               </div>
             ) : (
               <div className="text-center py-8">
-                <Bell className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                <p className="text-gray-600 mb-4">You don&apos;t have any alerts set up yet</p>
-                <p className="text-sm text-gray-500">
+                <Bell className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+                <p className="text-muted-foreground mb-4">You don&apos;t have any alerts set up yet</p>
+                <p className="text-sm text-muted-foreground">
                   Create alerts on movie detail pages to get notified when they become available
                 </p>
               </div>
