@@ -85,11 +85,11 @@ export default function Home() {
             className="flex gap-4 w-full max-w-3xl mx-auto flex-col sm:flex-row p-4 sm:p-2 bg-transparent"
           >
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+              <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input
                 type="text"
                 placeholder="Search for a movie or show..."
-                className="w-full pl-12 p-5 rounded-xl bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus:ring-2 focus:ring-primary shadow-inner"
+                className="w-full pl-5 pr-12 p-5 rounded-xl bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus:ring-2 focus:ring-primary shadow-inner"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
