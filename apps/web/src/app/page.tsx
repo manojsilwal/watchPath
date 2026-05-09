@@ -89,14 +89,14 @@ export default function Home() {
               <Input
                 type="text"
                 placeholder="Search for a movie or show..."
-                className="w-full pl-12 p-5 rounded-xl bg-white/80 border-transparent text-foreground placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 shadow-inner"
+                className="w-full pl-12 p-5 rounded-xl bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus:ring-2 focus:ring-primary shadow-inner"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             <div className="relative w-full sm:w-auto">
               <Select value={country} onValueChange={setCountry}>
-                <SelectTrigger className="w-full sm:w-32 p-5 rounded-xl bg-background border-border focus:ring-2 focus:ring-primary shadow-inner font-medium">
+                <SelectTrigger className="w-full sm:w-32 p-5 rounded-xl bg-zinc-900 border-zinc-800 text-white focus:ring-2 focus:ring-primary shadow-inner font-medium">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
